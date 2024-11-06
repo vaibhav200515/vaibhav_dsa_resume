@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Assignment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+</head>
+
+<body>
+    <nav class="navbar background">
+        <ul class="navlist">
+            <li><a href='index.html'>Home</a></li>
+            <li><a href='array'>Array</a></li>
+            <li><a href='string'>Strings</a></li>
+            <li><a href='2darray'>2D Array</a></li>
+            <li><a href='searching'>Searching Algorithm</a></li>
+            <li><a href='sorting'>Sorting Algorithm</a></li>
+            <li><a href='linkedlist'>Linked List</a></li>
+            <li><a href='stack'>Stack</a></li>
+            <li><a href='queue'>Queue</a></li>
+            <li><a href='tree'>Tree</a></li>
+            <li><a href='graph'>Graph</a></li>
+            <li><a href='recursion'>Recursion</a></li>
+        </ul>
+    </nav>
+    <section class="background firstsection2">
+        <div class="box-main">
+            <div class="firsthalf2">
+                <ul class="navlist2">
+<pre class="text-small">
+    
+    #include&lt;stdio.h&gt;
+    #include&lt;stdlib.h&gt;
+    #include&lt;string.h&gt;
+    
+    void main()
+    {
+        char input[50],subs[15],with[15],dub[15];
+        int i=0,j=0,lenght;
+        puts("Enter the sentence : ");
+        gets(input);
+        puts("Enter the word to be replaced");
+        gets(subs);
+        puts("Enter the word you want to replace with");
+        gets(with);
+        puts(input);
+    
+        lenght=strlen(input);
+        while (lenght&gt;=0)
+        {
+            if (input[i]!= ' ')
+            
+            {
+                dub[j]=input[i];
+                j++;
+            }
+             
+            if (input[i]==' '|| input[i]=='\0')
+            {
+                dub[j]='\0';
+                if (strcmp(subs,dub)==0) //compare string
+                {
+                    printf("%s ",with);
+                }
+                else
+                {
+                    printf("%s ",dub);
+                }
+                j=0;
+                
+            }
+            i++;
+            
+            lenght--;
+        }
+        
+    }
+
+</pre>
+<pre class="text-small">
+<b class="text-big">Output:</b>
+
+Enter the sentence : 
+I love programming languages like C++ and Java
+Enter the word to be replaced
+like
+Enter the word you want to replace with
+programming
+I love progranming languages like C++ and Java
+
+</pre>
+</body>
+</html>

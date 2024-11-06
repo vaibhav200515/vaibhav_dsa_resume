@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Assignment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+</head>
+
+<body>
+    <nav class="navbar background">
+        <ul class="navlist">
+            <li><a href='index.html'>Home</a></li>
+            <li><a href='array'>Array</a></li>
+            <li><a href='string'>Strings</a></li>
+            <li><a href='2darray'>2D Array</a></li>
+            <li><a href='searching'>Searching Algorithm</a></li>
+            <li><a href='sorting'>Sorting Algorithm</a></li>
+            <li><a href='linkedlist'>Linked List</a></li>
+            <li><a href='stack'>Stack</a></li>
+            <li><a href='queue'>Queue</a></li>
+            <li><a href='tree'>Tree</a></li>
+            <li><a href='graph'>Graph</a></li>
+            <li><a href='recursion'>Recursion</a></li>
+        </ul>
+    </nav>
+    <section class="background firstsection2">
+        <div class="box-main">
+            <div class="firsthalf2">
+                <ul class="navlist2">
+    <pre class="text-small ">
+            #include < stdio.h>
+            #include < stdlib.h>
+            
+            #define MAX_SIZE 10
+            
+            int stack[MAX_SIZE];
+            int top = -1;
+            
+            int isFull() {
+                return top == MAX_SIZE - 1;
+            }
+            
+            int isEmpty() {
+                return top == -1;
+            }
+            
+            void push(int item) {
+                if (isFull()) {
+                    printf("Stack is full. Cannot push %d.\n", item);
+                } else {
+                    stack[++top] = item;
+                    printf("Pushed %d onto the stack.\n", item);
+                }
+            }
+            
+            void pop() {
+                if (isEmpty()) {
+                    printf("Stack is empty. Cannot pop.\n");
+                } else {
+                    printf("Popped %d from the stack.\n", stack[top--]);
+                }
+            }
+            
+            int peek() {
+                if (isEmpty()) {
+                    printf("Stack is empty. No element to peek.\n");
+                    return -1;
+                } else {
+                    printf("Top element: %d\n", stack[top]);
+                    return stack[top];
+                }
+            }
+            
+            int main() {
+                int choice, item;
+            
+                while (1) {
+                    printf("Stack Operations:\n");
+                    printf("1. Push\n");
+                    printf("2. Pop\n");
+                    printf("3. Peek\n");
+                    printf("4. Is Empty\n");
+                    printf("5. Is Full\n");
+                    printf("6. Exit\n");
+            
+                    printf("Enter your choice: ");
+                    scanf("%d", &choice);
+            
+                    switch (choice) {
+                        case 1:
+                            printf("Enter element to push: ");
+                            scanf("%d", &item);
+                            push(item);
+                            break;
+            
+                        case 2:
+                            pop();
+                            break;
+            
+                        case 3:
+                            peek();
+                            break;
+            
+                        case 4:
+                            if (isEmpty()) {
+                                printf("Stack is empty.\n");
+                            } else {
+                                printf("Stack is not empty.\n");
+                            }
+                            break;
+            
+                        case 5:
+                            if (isFull()) {
+                                printf("Stack is full.\n");
+                            } else {
+                                printf("Stack is not full.\n");
+                            }
+                            break;
+            
+                        case 6:
+                            exit(0);
+                            break;
+            
+                        default:
+                            printf("Invalid choice. Please enter a valid option.\n");
+                    }
+                }
+            
+                return 0;
+            }
+    </pre>
+<pre class="text-small">
+<b class="text-big">Output:</b>
+Stack Operations:
+1. Push
+2. Pop
+3. Peek
+4. Is Empty
+5. Is Full
+6. Exit
+Enter your choice: 1
+Enter element to push: 1
+Pushed 1 onto the stack.
+Stack Operations:
+1. Push
+2. Pop
+3. Peek
+4. Is Empty
+5. Is Full
+6. Exit
+Enter your choice: 22
+Invalid choice. Please enter a valid option.
+Stack Operations:
+1. Push
+2. Pop
+3. Peek
+4. Is Empty
+5. Is Full
+6. Exit
+Enter your choice: 2
+Popped 1 from the stack.
+Stack Operations:
+1. Push
+2. Pop
+3. Peek
+4. Is Empty
+5. Is Full
+6. Exit
+Enter your choice: 3
+Stack is empty. No element to peek.
+Stack Operations:
+1. Push
+2. Pop
+3. Peek
+4. Is Empty
+5. Is Full
+6. Exit
+Enter your choice: 4
+Stack is empty.
+Stack Operations:
+1. Push
+2. Pop
+3. Peek
+4. Is Empty
+5. Is Full
+6. Exit
+Enter your choice: 4
+Stack is empty.
+Stack Operations:
+1. Push
+2. Pop
+3. Peek
+4. Is Empty
+5. Is Full
+6. Exit
+Enter your choice: 5
+Stack is not full.
+Stack Operations:
+1. Push
+2. Pop
+3. Peek
+4. Is Empty
+5. Is Full
+6. Exit
+Enter your choice: 6
+</pre>
+</body>
+</html>

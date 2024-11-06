@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Assignment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+</head>
+s
+<body>
+    <nav class="navbar background">
+        <ul class="navlist">
+            <li><a href='index.html'>Home</a></li>
+            <li><a href='array'>Array</a></li>
+            <li><a href='string'>Strings</a></li>
+            <li><a href='2darray'>2D Array</a></li>
+            <li><a href='searching'>Searching Algorithm</a></li>
+            <li><a href='sorting'>Sorting Algorithm</a></li>
+            <li><a href='linkedlist'>Linked List</a></li>
+            <li><a href='stack'>Stack</a></li>
+            <li><a href='queue'>Queue</a></li>
+            <li><a href='tree'>Tree</a></li>
+            <li><a href='graph'>Graph</a></li>
+            <li><a href='recursion'>Recursion</a></li>
+        </ul>
+    </nav>
+    <section class="background firstsection2">
+        <div class="box-main">
+            <div class="firsthalf2">
+                <ul class="navlist2">
+<pre class="text-small">
+    #include stdio.h>
+    #include stdlib.h>
+    
+    struct Node {
+        char data;
+        struct Node* left;
+        struct Node* right;
+    };
+    
+    typedef struct Node Node;
+    
+    int search(char inorder[], int start, int end, char key) {
+        for (int i = start; i <= end; i++) {
+            if (inorder[i] == key) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    Node* buildTree(char preorder[], char inorder[], int start, int end, int* preIndex) {
+        if (start > end) {
+            return NULL;
+        }
+    
+        Node* node = (Node*)malloc(sizeof(Node));
+        node->data = preorder[(*preIndex)++];
+        node->left = NULL;
+        node->right = NULL;
+    
+        if (start == end) {
+            return node;
+        }
+    
+        int inIndex = search(inorder, start, end, node->data);
+    
+        node->left = buildTree(preorder, inorder, start, inIndex - 1, preIndex);
+        node->right = buildTree(preorder, inorder, inIndex + 1, end, preIndex);
+    
+        return node;
+    }
+    
+    void inorderTraversal(Node* root) {
+        if (root != NULL) {
+            inorderTraversal(root->left);
+            printf("%c ", root->data);
+            inorderTraversal(root->right);
+        }
+    }
+    
+    int main() {
+        char preorder[100];
+        char inorder[100];
+    
+        printf("Enter the preorder traversal: ");
+        scanf("%s", preorder);
+    
+        printf("Enter the inorder traversal: ");
+        scanf("%s", inorder);
+    
+        int n = strlen(preorder);
+        int preIndex = 0;
+    
+        Node* root = buildTree(preorder, inorder, 0, n - 1, &preIndex);
+    
+        printf("Inorder traversal of constructed binary tree: ");
+        inorderTraversal(root);
+        printf("\n");
+    
+        return 0;
+    }
+</pre>
+<pre class="text-small">
+<b class="text-big">Output:</b>
+
+Enter the preorder traversal: ABDECF
+Enter the inorder traversal: DBEAFC
+Inorder traversal of the constructed binary tree: D B E A F C                           
+</pre>
+</body>
+</html>

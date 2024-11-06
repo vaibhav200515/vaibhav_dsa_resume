@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Assignment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+</head>
+
+<body>
+    <nav class="navbar background">
+        <ul class="navlist">
+            <li><a href='index.html'>Home</a></li>
+            <li><a href='array'>Array</a></li>
+            <li><a href='string'>Strings</a></li>
+            <li><a href='2darray'>2D Array</a></li>
+            <li><a href='searching'>Searching Algorithm</a></li>
+            <li><a href='sorting'>Sorting Algorithm</a></li>
+            <li><a href='linkedlist'>Linked List</a></li>
+            <li><a href='stack'>Stack</a></li>
+            <li><a href='queue'>Queue</a></li>
+            <li><a href='tree'>Tree</a></li>
+            <li><a href='graph'>Graph</a></li>
+            <li><a href='recursion'>Recursion</a></li>
+        </ul>
+    </nav>
+    <section class="background firstsection2">
+        <div class="box-main">
+            <div class="firsthalf2">
+                <ul class="navlist2">
+<pre class="text-small">
+    #include < stdio.h>
+    #include < stdlib.h>
+    
+    struct Node {
+        int data;
+        struct Node* next;
+    };
+    
+    struct Graph {
+        int V;
+        struct Node** adjList;
+    };
+    
+    struct Node* createNode(int data) {
+        struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+        newNode->data = data;
+        newNode->next = NULL;
+        return newNode;
+    }
+    
+    struct Graph* createGraph(int V) {
+        struct Graph* graph = (struct Graph*)malloc(sizeof(struct Graph));
+        graph->V = V;
+        graph->adjList = (struct Node**)malloc(V * sizeof(struct Node*));
+    
+        for (int i = 0; i < V; i++) {
+            graph->adjList[i] = NULL;
+        }
+    
+        return graph;
+    }
+    
+    void addEdge(struct Graph* graph, int src, int dest) {
+        struct Node* newNode = createNode(dest);
+        newNode->next = graph->adjList[src];
+        graph->adjList[src] = newNode;
+    
+        newNode = createNode(src);
+        newNode->next = graph->adjList[dest];
+        graph->adjList[dest] = newNode;
+    }
+    
+    void breadthFirstSearch(struct Graph* graph, int startVertex, int visited[]) {
+        int queue[graph->V];
+        int front = -1, rear = -1;
+    
+        printf("Breadth-First Search Traversal starting from vertex %d: ", startVertex);
+    
+        visited[startVertex] = 1;
+        queue[++rear] = startVertex;
+    
+        while (front != rear) {
+            int currentVertex = queue[++front];
+            printf("%d ", currentVertex);
+    
+            struct Node* current = graph->adjList[currentVertex];
+            while (current != NULL) {
+                if (!visited[current->data]) {
+                    visited[current->data] = 1;
+                    queue[++rear] = current->data;
+                }
+                current = current->next;
+            }
+        }
+    
+        printf("\n");
+    }
+    
+    int main() {
+        int V, E;
+    
+        printf("Enter the number of vertices: ");
+        scanf("%d", &V);
+    
+        struct Graph* graph = createGraph(V);
+    
+        printf("Enter the number of edges: ");
+        scanf("%d", &E);
+    
+        for (int i = 0; i < E; i++) {
+            int src, dest;
+            printf("Enter edge %d (source destination): ", i + 1);
+            scanf("%d %d", &src, &dest);
+            addEdge(graph, src, dest);
+        }
+    
+        int visited[V];
+        for (int i = 0; i < V; i++) {
+            visited[i] = 0;
+        }
+    
+        int startVertex;
+        printf("Enter the starting vertex for BFS: ");
+        scanf("%d", &startVertex);
+    
+        breadthFirstSearch(graph, startVertex, visited);
+    
+        return 0;
+    }
+</pre>
+<pre class="text-small">
+<b class="text-big">Output:</b>
+</pre>
+</body>
+</html>

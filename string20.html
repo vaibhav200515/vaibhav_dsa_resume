@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Assignment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+</head>
+
+<body>
+    <nav class="navbar background">
+        <ul class="navlist">
+            <li><a href='index.html'>Home</a></li>
+            <li><a href='array'>Array</a></li>
+            <li><a href='string'>Strings</a></li>
+            <li><a href='2darray'>2D Array</a></li>
+            <li><a href='searching'>Searching Algorithm</a></li>
+            <li><a href='sorting'>Sorting Algorithm</a></li>
+            <li><a href='linkedlist'>Linked List</a></li>
+            <li><a href='stack'>Stack</a></li>
+            <li><a href='queue'>Queue</a></li>
+            <li><a href='tree'>Tree</a></li>
+            <li><a href='graph'>Graph</a></li>
+            <li><a href='recursion'>Recursion</a></li>
+        </ul>
+    </nav>
+    <section class="background firstsection2">
+        <div class="box-main">
+            <div class="firsthalf2">
+                <ul class="navlist2">
+<pre class="text-small">
+    
+#include < stdio.h>
+
+#define size 50
+
+void search(char[]);
+
+int main(){
+    char str[size];
+    printf("Enter input and press ';' to end taking input: ");
+    scanf("%[^;]", str);
+    search(str);
+    return 0;
+}
+
+void search(char str[]){
+    int space=0, character=0, words=0, lines=1, i=0;
+    while(str[i]!='\0'){
+        if(str[i]==' '){
+            space++;
+            words++;
+        }
+        else if(str[i]=='\n'){
+            lines++;
+            words++;
+        }
+        character++;
+        i++;
+    }
+    printf("Number of charcters: %d\n", character);
+    printf("Number of space: %d\n", space);
+    printf("Number of words: %d\n", words);
+    printf("Number of lines: %d\n", lines);
+}
+
+</pre>
+<pre class="text-small">
+<b class="text-big">Output:</b>
+
+Enter input and press ';' to end taking input: hello how 
+are you;
+Number of charcters: 17
+Number of space: 2
+Number of words: 3
+Number of lines: 2
+
+</pre>
+</body>
+</html>

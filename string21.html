@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Assignment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+</head>
+
+<body>
+    <nav class="navbar background">
+        <ul class="navlist">
+            <li><a href='index.html'>Home</a></li>
+            <li><a href='array'>Array</a></li>
+            <li><a href='string'>Strings</a></li>
+            <li><a href='2darray'>2D Array</a></li>
+            <li><a href='searching'>Searching Algorithm</a></li>
+            <li><a href='sorting'>Sorting Algorithm</a></li>
+            <li><a href='linkedlist'>Linked List</a></li>
+            <li><a href='stack'>Stack</a></li>
+            <li><a href='queue'>Queue</a></li>
+            <li><a href='tree'>Tree</a></li>
+            <li><a href='graph'>Graph</a></li>
+            <li><a href='recursion'>Recursion</a></li>
+        </ul>
+    </nav>
+    <section class="background firstsection2">
+        <div class="box-main">
+            <div class="firsthalf2">
+                <ul class="navlist2">
+<pre class="text-small">
+
+    #include &lt;stdio.h&gt;
+    #include &lt;string.h&gt;
+    void permute(char str[], int currentIndex, int length) {
+        if (currentIndex == length) {
+            printf("%s\n", str);
+            return;
+        }
+    
+        for (int i = currentIndex; i &lt;= length; i++) {
+            // Swap characters
+            char temp = str[currentIndex];
+            str[currentIndex] = str[i];
+            str[i] = temp;
+    
+            //generate permutations
+            permute(str, currentIndex + 1, length);
+    
+            //backtracking
+            temp = str[currentIndex];
+            str[currentIndex] = str[i];
+            str[i] = temp;
+        }
+    }
+    
+    void main() {
+        char str[100];
+        printf("Enter a string: ");
+        scanf("%s", str);
+        int n = strlen(str);
+        printf("Permutations of the string are:\n");
+        permute(str,&nbsp;0,&nbsp;n&nbsp;-&nbsp;1);
+    }
+    
+</pre>
+<pre class="text-small">
+<b class="text-big">Output:</b>
+
+Enter a string: ABCD
+Permutations of the string are:
+ABDC
+ACBD
+ADCB
+BACD
+BADC
+BCAD
+BCDA
+CABD
+CADB
+CDAB
+DABC
+DBCA
+DCBA
+
+</pre>
+</body>
+</html>

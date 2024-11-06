@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Assignment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+</head>
+
+<body>
+    <nav class="navbar background">
+        <ul class="navlist">
+            <li><a href='index.html'>Home</a></li>
+            <li><a href='array'>Array</a></li>
+            <li><a href='string'>Strings</a></li>
+            <li><a href='2darray'>2D Array</a></li>
+            <li><a href='searching'>Searching Algorithm</a></li>
+            <li><a href='sorting'>Sorting Algorithm</a></li>
+            <li><a href='linkedlist'>Linked List</a></li>
+            <li><a href='stack'>Stack</a></li>
+            <li><a href='queue'>Queue</a></li>
+            <li><a href='tree'>Tree</a></li>
+            <li><a href='graph'>Graph</a></li>
+            <li><a href='recursion'>Recursion</a></li>
+        </ul>
+    </nav>
+    <section class="background firstsection2">
+        <div class="box-main">
+            <div class="firsthalf2">
+                <ul class="navlist2">
+<pre class="text-small">
+    
+    #include &lt;stdio.h&gt;
+    #include &lt;string.h&gt;
+    
+    void stringToAsciiArray(char str[], int asciiArray[]) {
+        int length = strlen(str);
+    
+        for (int i = 0; i &lt; length; i++) {
+            asciiArray[i] = (int)str[i];
+        }
+    }
+    
+    int main() {
+        char str[100]; // Assuming a string of up to 100 characters
+        int asciiArray[100]; // Assuming the same length for ASCII values
+    
+        printf("Enter a string: ");
+        gets(str); // Read a line of text (be cautious about buffer overflow)
+    
+        stringToAsciiArray(str, asciiArray);
+    
+        printf("ASCII values of the characters in the string:\n");
+        for (int i = 0; i &lt; strlen(str); i++) {
+            printf("%c: %d\n", str[i], asciiArray[i]);
+        }
+    
+    return 0;
+    }
+
+</pre>
+<pre class="text-small">
+<b class="text-big">Output:</b>
+
+
+Enter a string: Hello World!
+ASCII values of the characters in the string:
+H: 72
+e: 101
+l: 108
+l: 108
+o: 111
+: 58
+W: 87
+o: 111
+r: 114
+l: 108
+d: 100
+!: 33
+
+</pre>
+</body>
+</html>

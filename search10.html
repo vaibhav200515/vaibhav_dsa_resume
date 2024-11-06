@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Assignment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+</head>
+
+<body>
+    <nav class="navbar background">
+        <ul class="navlist">
+            <li><a href='index.html'>Home</a></li>
+            <li><a href='array'>Array</a></li>
+            <li><a href='string'>Strings</a></li>
+            <li><a href='2darray'>2D Array</a></li>
+            <li><a href='searching'>Searching Algorithm</a></li>
+            <li><a href='sorting'>Sorting Algorithm</a></li>
+            <li><a href='linkedlist'>Linked List</a></li>
+            <li><a href='stack'>Stack</a></li>
+            <li><a href='queue'>Queue</a></li>
+            <li><a href='tree'>Tree</a></li>
+            <li><a href='graph'>Graph</a></li>
+            <li><a href='recursion'>Recursion</a></li>
+        </ul>
+    </nav>
+    <section class="background firstsection2">
+        <div class="box-main">
+            <div class="firsthalf2">
+                <ul class="navlist2">
+<pre class="text-small">
+    
+        #include < stdio.h>
+        #include < stdlib.h>
+        #include < time.h>
+        
+        int binarySearch(int arr[], int low, int high, int key) {
+            while (low <= high) {
+                int mid = low + (high - low) / 2;
+        
+                if (arr[mid] == key)
+                    return mid;
+        
+                if (arr[mid] < key)
+                    low = mid + 1;
+                else
+                    high = mid - 1;
+            }
+        
+            return -1;
+        }
+        
+        double measureBinarySearchTime(int arr[], int size, int key) {
+            clock_t start, end;
+            double cpu_time_used;
+        
+            start = clock();
+            binarySearch(arr, 0, size - 1, key);
+            end = clock();
+        
+            cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
+        
+            return cpu_time_used;
+        }
+        
+        int main() {
+            int size, key;
+        
+            printf("Enter the size of the array: ");
+            scanf("%d", &size);
+        
+            int *arr = (int *)malloc(size * sizeof(int));
+        
+            if (!arr) {
+                printf("Memory allocation failed.\n");
+                return 1;
+            }
+        
+            printf("Enter %d elements in ascending order:\n", size);
+        
+            for (int i = 0; i < size; ++i)
+                scanf("%d", &arr[i]);
+        
+            printf("Enter the key to search: ");
+            scanf("%d", &key);
+        
+            int worstCaseIndex = binarySearch(arr, 0, size - 1, key);
+            int bestCaseIndex = (worstCaseIndex != -1) ? worstCaseIndex : 0;
+        
+            printf("Worst-case: ");
+            if (worstCaseIndex != -1)
+                printf("Element %d found at index %d.\n", key, worstCaseIndex);
+            else
+                printf("Element %d not found.\n", key);
+        
+            printf("Best-case: ");
+            if (bestCaseIndex != -1)
+                printf("Element %d found at index %d.\n", key, bestCaseIndex);
+            else
+                printf("Element %d not found.\n", key);
+        
+            double worstCaseTime = measureBinarySearchTime(arr, size, key);
+            double bestCaseTime = (worstCaseIndex != -1) ? worstCaseTime : 0.0;
+        
+            printf("Worst-case: Time taken for binary search: %f seconds.\n", worstCaseTime);
+            printf("Best-case: Time taken for binary search: %f seconds.\n", bestCaseTime);
+        
+            free(arr);
+        
+            return 0;
+        }
+        
+</pre>
+<pre class="text-small">
+<b class="text-big">Output:</b>
+
+Enter the size of the array: 5
+Enter 5 elements in ascending order:
+5
+4
+3
+2
+1
+Enter the key to search: 1
+Worst-case: Element 1 not found.
+Best-case: Element 1 found at index 0.
+Worst-case: Time taken for binary search: 0.000000 seconds.
+Best-case: Time taken for binary search: 0.000000 seconds.
+
+</pre>
+</body>
+</html>

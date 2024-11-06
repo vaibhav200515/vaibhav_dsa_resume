@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Assignment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+</head>
+
+<body>
+    <nav class="navbar background">
+        <ul class="navlist">
+            <li><a href='index.html'>Home</a></li>
+            <li><a href='array'>Array</a></li>
+            <li><a href='string'>Strings</a></li>
+            <li><a href='2darray'>2D Array</a></li>
+            <li><a href='searching'>Searching Algorithm</a></li>
+            <li><a href='sorting'>Sorting Algorithm</a></li>
+            <li><a href='linkedlist'>Linked List</a></li>
+            <li><a href='stack'>Stack</a></li>
+            <li><a href='queue'>Queue</a></li>
+            <li><a href='tree'>Tree</a></li>
+            <li><a href='graph'>Graph</a></li>
+            <li><a href='recursion'>Recursion</a></li>
+        </ul>
+    </nav>
+    <section class="background firstsection2">
+        <div class="box-main">
+            <div class="firsthalf2">
+                <ul class="navlist2">
+<pre class="text-small">
+
+    #include stdio.h&gt;
+    #include stdlib.h&gt;
+    
+    #define MAX_SIZE 100
+    
+    typedef struct {
+        int items[MAX_SIZE];
+        int top;
+    } Stack;
+    
+    void initialize(Stack* stack) {
+        stack-&gt;top = -1;
+    }
+    
+    int isEmpty(Stack* stack) {
+        return stack-&gt;top == -1;
+    }
+    
+    int isFull(Stack* stack) {
+        return stack-&gt;top == MAX_SIZE - 1;
+    }
+    
+    void push(Stack* stack, int data) {
+        if (!isFull(stack)) {
+            stack-&gt;items[++stack-&gt;top] = data;
+        }
+    }
+    
+    int pop(Stack* stack) {
+        if (!isEmpty(stack)) {
+            return stack-&gt;items[stack-&gt;top--];
+        }
+        return -1;
+    }
+    
+    void sortStack(Stack* stack) {
+        int tempStack[MAX_SIZE];
+        int tempTop = -1;
+    
+        while (!isEmpty(stack)) {
+            int temp = pop(stack);
+            while (!isEmpty(stack) &amp;&amp; temp &lt; stack-&gt;items[stack-&gt;top]) {
+                push(&amp;tempStack, pop(stack));
+            }
+            push(stack, temp);
+            while (tempTop &gt;= 0) {
+                push(stack, tempStack[tempTop--]);
+            }
+        }
+    }
+    
+    int main() {
+        Stack stack;
+        initialize(&amp;stack);
+    
+        int n, data;
+        
+        printf("Enter the number of elements: ");
+        scanf("%d", &amp;n);
+        
+        printf("Enter %d elements:\n", n);
+        for (int i = 0; i &lt; n; i++) {
+            scanf("%d", &amp;data);
+            push(&amp;stack, data);
+        }
+    
+        printf("Original stack: ");
+        while (!isEmpty(&amp;stack)) {
+            printf("%d ", pop(&amp;stack));
+        }
+        printf("\n");
+    
+        initialize(&amp;stack);
+    
+        printf("Enter %d elements:\n", n);
+        for (int i = 0; i &lt; n; i++) {
+            scanf("%d", &amp;data);
+            push(&amp;stack, data);
+        }
+    
+        sortStack(&amp;stack);
+    
+        printf("Sorted stack: ");
+        while (!isEmpty(&amp;stack)) {
+            printf("%d ", pop(&amp;stack));
+        }
+        printf("\n");
+    
+        return 0;
+    }
+</pre>
+<pre class="text-small">
+<b class="text-big">Output:</b>
+
+Enter the number of elements to push onto the stack: 3
+Enter element 1: 11
+Enter element 2: 22
+Enter element 3: 33
+Original stack elements: Stack elements: 11 22 33
+</pre>
+</body>
+</html>

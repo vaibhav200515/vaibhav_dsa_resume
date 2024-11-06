@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Assignment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+</head>
+
+<body>
+    <nav class="navbar background">
+        <ul class="navlist">
+            <li><a href='index.html'>Home</a></li>
+            <li><a href='array'>Array</a></li>
+            <li><a href='string'>Strings</a></li>
+            <li><a href='2darray'>2D Array</a></li>
+            <li><a href='searching'>Searching Algorithm</a></li>
+            <li><a href='sorting'>Sorting Algorithm</a></li>
+            <li><a href='linkedlist'>Linked List</a></li>
+            <li><a href='stack'>Stack</a></li>
+            <li><a href='queue'>Queue</a></li>
+            <li><a href='tree'>Tree</a></li>
+            <li><a href='graph'>Graph</a></li>
+            <li><a href='recursion'>Recursion</a></li>
+        </ul>
+    </nav>
+    <section class="background firstsection2">
+        <div class="box-main">
+            <div class="firsthalf2">
+                <ul class="navlist2">
+<pre class="text-small">
+    
+    #include &lt;stdio.h&gt;
+    #include &lt;string.h&gt;
+    
+    #define MAX_WORDS 10
+    #define MAX_WORD_LENGTH 30
+    #define MAX_MEANING_LENGTH 100
+    
+    struct DictionaryEntry {
+        char word[MAX_WORD_LENGTH];
+        char meaning[MAX_MEANING_LENGTH];
+    };
+    
+    struct DictionaryEntry dictionary[MAX_WORDS];
+    int dictionarySize = 0;
+    
+    void createEntry() {
+        if (dictionarySize &gt;= MAX_WORDS) {
+            printf("Dictionary is full. Cannot add more words.\n");
+            return;
+        }
+    
+        printf("Enter word: ");
+        scanf("%s", dictionary[dictionarySize].word);
+    
+        printf("Enter meaning: ");
+        getchar(); // Consume newline character
+        fgets(dictionary[dictionarySize].meaning, sizeof(dictionary[dictionarySize].meaning), stdin);
+    
+        dictionarySize++;
+        printf("Entry added to the dictionary.\n");
+    }
+    
+    void deleteEntry() {
+        char searchWord[MAX_WORD_LENGTH];
+        printf("Enter word to delete: ");
+        scanf("%s", searchWord);
+    
+        int found = 0;
+        for (int i = 0; i &lt; dictionarySize; i++) {
+            if (strcmp(dictionary[i].word, searchWord) == 0) {
+                found = 1;
+                for (int j = i; j &lt; dictionarySize - 1; j++) {
+                    strcpy(dictionary[j].word, dictionary[j + 1].word);
+                    strcpy(dictionary[j].meaning, dictionary[j + 1].meaning);
+                }
+                dictionarySize--;
+                printf("Entry deleted from the dictionary.\n");
+                break;
+            }
+        }
+    
+        if (!found) {
+            printf("Word not found in the dictionary.\n");
+        }
+    }
+    
+    void searchWord() {
+        char searchWord[MAX_WORD_LENGTH];
+        printf("Enter word to search: ");
+        scanf("%s", searchWord);
+    
+        int found = 0;
+        for (int i = 0; i &lt; dictionarySize; i++) {
+            if (strcmp(dictionary[i].word, searchWord) == 0) {
+                found = 1;
+                printf("Meaning: %s\n", dictionary[i].meaning);
+                break;
+            }
+        }
+    
+        if (!found) {
+            printf("Word not found in the dictionary.\n");
+        }
+    }
+    
+    int main() {
+        int choice;
+    
+        while (1) {
+            printf("\nDictionary Menu:\n");
+            printf("1. Create Entry\n");
+            printf("2. Delete Entry\n");
+            printf("3. Search for Meaning\n");
+            printf("4. Exit\n");
+            printf("Enter your choice: ");
+            scanf("%d", &amp;choice);
+    
+            switch (choice) {
+                case 1:
+                    createEntry();
+                    break;
+                case 2:
+                    deleteEntry();
+                    break;
+                case 3:
+                    searchWord();
+                    break;
+                case 4:
+                    return 0;
+                default:
+                    printf("Invalid choice. Please try again.\n");
+            }
+        }
+    return 0;
+    }
+    
+</pre>
+<pre class="text-small">
+<b class="text-big">Output:</b>
+
+Dictionary Menu:
+1. Create Entry
+2. Delete Entry
+3. Search for Meaning
+4. Exit
+Enter your choice: 1
+Enter word: book
+Enter meaning: used for reading
+Entry added to the dictionary.
+
+Dictionary Menu:
+1. Create Entry
+2. Delete Entry
+3. Search for Meaning
+4. Exit
+Enter your choice: 1
+Enter word: mobile
+Enter meaning: electronic device
+Entry added to the dictionary.
+
+Dictionary Menu:
+1. Create Entry
+2. Delete Entry
+3. Search for Meaning
+4. Exit
+Enter your choice: 3
+Enter word to search: mobile
+Meaning: electronic device
+
+
+Dictionary Menu:
+1. Create Entry
+2. Delete Entry
+3. Search for Meaning
+4. Exit
+Enter your choice: 4
+
+</pre>
+</body>
+</html>

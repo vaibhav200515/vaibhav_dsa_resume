@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Assignment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+</head>
+
+<body>
+    <nav class="navbar background">
+        <ul class="navlist">
+            <li><a href='index.html'>Home</a></li>
+            <li><a href='array'>Array</a></li>
+            <li><a href='string'>Strings</a></li>
+            <li><a href='2darray'>2D Array</a></li>
+            <li><a href='searching'>Searching Algorithm</a></li>
+            <li><a href='sorting'>Sorting Algorithm</a></li>
+            <li><a href='linkedlist'>Linked List</a></li>
+            <li><a href='stack'>Stack</a></li>
+            <li><a href='queue'>Queue</a></li>
+            <li><a href='tree'>Tree</a></li>
+            <li><a href='graph'>Graph</a></li>
+            <li><a href='recursion'>Recursion</a></li>
+        </ul>
+    </nav>
+    <section class="background firstsection2">
+        <div class="box-main">
+            <div class="firsthalf2">
+                <ul class="navlist2">
+    <pre class="text-small">
+            #include < stdio.h>
+            #include < stdlib.h>
+            #include < string.h>
+            
+            struct Node {
+                char data;
+                struct Node* next;
+            };
+            
+            struct Node* top = NULL;
+            
+            void push(char item) {
+                struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+                newNode->data = item;
+                newNode->next = top;
+                top = newNode;
+            }
+            
+            char pop() {
+                if (top == NULL) {
+                    return '\0';
+                }
+                struct Node* temp = top;
+                char data = temp->data;
+                top = top->next;
+                free(temp);
+                return data;
+            }
+            
+            void reverseString(char* str) {
+                int length = strlen(str);
+                for (int i = 0; i < length; i++) {
+                    push(str[i]);
+                }
+                for (int i = 0; i < length; i++) {
+                    str[i] = pop();
+                }
+            }
+            
+            int main() {
+                char str[100];
+                
+                printf("Enter a string: ");
+                scanf("%s", str);
+                
+                reverseString(str);
+                
+                printf("Reversed string: %s\n", str);
+            
+                return 0;
+            }
+    </pre>
+<pre class="text-small">
+<b class="text-big">Output:</b>
+Enter a string: hello
+Reversed string: olleh
+</pre>
+</body>
+</html>

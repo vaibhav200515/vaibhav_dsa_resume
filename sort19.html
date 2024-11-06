@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Assignment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+</head>
+
+<body>
+    <nav class="navbar background">
+        <ul class="navlist">
+            <li><a href='index.html'>Home</a></li>
+            <li><a href='array'>Array</a></li>
+            <li><a href='string'>Strings</a></li>
+            <li><a href='2darray'>2D Array</a></li>
+            <li><a href='searching'>Searching Algorithm</a></li>
+            <li><a href='sorting'>Sorting Algorithm</a></li>
+            <li><a href='linkedlist'>Linked List</a></li>
+            <li><a href='stack'>Stack</a></li>
+            <li><a href='queue'>Queue</a></li>
+            <li><a href='tree'>Tree</a></li>
+            <li><a href='graph'>Graph</a></li>
+            <li><a href='recursion'>Recursion</a></li>
+        </ul>
+    </nav>
+    <section class="background firstsection2">
+        <div class="box-main">
+            <div class="firsthalf2">
+                <ul class="navlist2">
+<pre class="text-small">
+
+        #include < stdio.h>
+        #include < stdlib.h>
+        #include < string.h>
+        #include < time.h>
+        
+        void swap(char* a, char* b) {
+            char* temp = a;
+            a = b;
+            b = temp;
+        }
+        
+        int partition(char* arr[], int low, int high) {
+            char* pivot = arr[high];
+            int i = low - 1;
+        
+            for (int j = low; j < high; j++) {
+                if (strcmp(arr[j], pivot) <= 0) {
+                    i++;
+                    swap(arr[i], arr[j]);
+                }
+            }
+            swap(arr[i + 1], arr[high]);
+        
+            return i + 1;
+        }
+        
+        void quickSortIterative(char* arr[], int low, int high) {
+            int stack[high - low + 1];
+            int top = -1;
+        
+            stack[++top] = low;
+            stack[++top] = high;
+        
+            while (top >= 0) {
+                high = stack[top--];
+                low = stack[top--];
+        
+                int p = partition(arr, low, high);
+        
+                if (p - 1 > low) {
+                    stack[++top] = low;
+                    stack[++top] = p - 1;
+                }
+        
+                if (p + 1 < high) {
+                    stack[++top] = p + 1;
+                    stack[++top] = high;
+                }
+            }
+        }
+        
+        void printStringArray(char* arr[], int n) {
+            for (int i = 0; i < n; i++) {
+                printf("%s ", arr[i]);
+            }
+            printf("\n");
+        }
+        
+        int main() {
+            int n;
+        
+            printf("Enter the size of the string array: ");
+            scanf("%d", &n);
+        
+            char* stringArray[n];
+        
+            printf("Enter the strings of the array:\n");
+            for (int i = 0; i < n; i++) {
+                stringArray[i] = (char*)malloc(100 * sizeof(char));
+                printf("String %d: ", i + 1);
+                scanf("%s", stringArray[i]);
+            }
+        
+            clock_t worst_start_time = clock();
+            quickSortIterative(stringArray, 0, n - 1);
+            clock_t worst_end_time = clock();
+            double worst_execution_time = ((double)(worst_end_time - worst_start_time)) / CLOCKS_PER_SEC;
+        
+            for (int i = 0; i < n; i++) {
+                free(stringArray[i]);
+                stringArray[i] = (char*)malloc(100 * sizeof(char));
+                printf("String %d: ", i + 1);
+                scanf("%s", stringArray[i]);
+            }
+        
+            clock_t best_start_time = clock();
+            quickSortIterative(stringArray, 0, n - 1);
+            clock_t best_end_time = clock();
+            double best_execution_time = ((double)(best_end_time - best_start_time)) / CLOCKS_PER_SEC;
+        
+            printf("\nSorted array: ");
+            printStringArray(stringArray, n);
+        
+            printf("Worst Execution time: %f seconds\n", worst_execution_time);
+            printf("Best Execution time: %f seconds\n", best_execution_time);
+        
+            for (int i = 0; i < n; i++) {
+                free(stringArray[i]);
+            }
+        
+            return 0;
+        }
+        
+</pre>
+<pre class="text-small">
+<b class="text-big">Output:</b>
+
+Enter the size of the string array: 5
+Enter the strings of the array:
+String 1: hi
+String 2: bro 
+String 3: do
+String 4: see
+String 5: we
+
+Sorted array: bro do hi see we
+Execution time: 0.000000 seconds
+
+</pre>
+</body>
+</html>

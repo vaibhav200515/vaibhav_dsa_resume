@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Assignment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+</head>
+
+<body>
+    <nav class="navbar background">
+        <ul class="navlist">
+            <li><a href='index.html'>Home</a></li>
+            <li><a href='array'>Array</a></li>
+            <li><a href='string'>Strings</a></li>
+            <li><a href='2darray'>2D Array</a></li>
+            <li><a href='searching'>Searching Algorithm</a></li>
+            <li><a href='sorting'>Sorting Algorithm</a></li>
+            <li><a href='linkedlist'>Linked List</a></li>
+            <li><a href='stack'>Stack</a></li>
+            <li><a href='queue'>Queue</a></li>
+            <li><a href='tree'>Tree</a></li>
+            <li><a href='graph'>Graph</a></li>
+            <li><a href='recursion'>Recursion</a></li>
+        </ul>
+    </nav>
+    <section class="background firstsection2">
+        <div class="box-main">
+            <div class="firsthalf2">
+                <ul class="navlist2">
+<pre class="text-small">
+
+        #include < stdio.h>
+        #include < stdlib.h>
+        #include < time.h>
+        
+        void merge(int arr[], int left, int middle, int right) {
+            int i, j, k;
+            int n1 = middle - left + 1;
+            int n2 = right - middle;
+        
+            int L[n1], R[n2];
+        
+            for (i = 0; i < n1; i++)
+                L[i] = arr[left + i];
+            for (j = 0; j < n2; j++)
+                R[j] = arr[middle + 1 + j];
+        
+            i = 0;
+            j = 0;
+            k = left;
+            while (i < n1 && j < n2) {
+                if (L[i] <= R[j]) {
+                    arr[k] = L[i];
+                    i++;
+                } else {
+                    arr[k] = R[j];
+                    j++;
+                }
+                k++;
+            }
+        
+            while (i < n1) {
+                arr[k] = L[i];
+                i++;
+                k++;
+            }
+        
+            while (j < n2) {
+                arr[k] = R[j];
+                j++;
+                k++;
+            }
+        }
+        
+        void mergeSort(int arr[], int left, int right) {
+            if (left < right) {
+                int middle = left + (right - left) / 2;
+        
+                mergeSort(arr, left, middle);
+                mergeSort(arr, middle + 1, right);
+        
+                merge(arr, left, middle, right);
+            }
+        }
+        
+        void printArray(int arr[], int size) {
+            for (int i = 0; i < size; i++)
+                printf("%d ", arr[i]);
+            printf("\n");
+        }
+        
+        int main() {
+            int n;
+        
+            printf("Enter the size of the array: ");
+            scanf("%d", &n);
+        
+            int arr[n];
+        
+            printf("Enter the elements of the array:\n");
+            for (int i = 0; i < n; i++) {
+                printf("Element %d: ", i + 1);
+                scanf("%d", &arr[i]);
+            }
+        
+            clock_t start_time = clock();
+        
+            mergeSort(arr, 0, n - 1);
+        
+            clock_t end_time = clock();
+        
+            double execution_time = ((double)(end_time - start_time)) / CLOCKS_PER_SEC;
+        
+            printf("\nSorted array: ");
+            printArray(arr, n);
+        
+            printf("Execution time: %f seconds\n", execution_time);
+        
+            return 0;
+        }
+        
+</pre>
+<pre class="text-small">
+<b class="text-big">Output:</b>
+
+Enter the size of the array: 5 
+Enter the elements of the array:
+Element 1: 635
+Element 2: 56
+Element 3: 233
+Element 4: 8097
+Element 5: 5323
+
+Sorted array: 56 233 635 5323 8097
+Execution time: 0.000000 seconds
+
+</pre>
+</body>
+</html>
